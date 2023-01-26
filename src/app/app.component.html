@@ -1,25 +1,23 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title class="titleBar">SERVIDORES AREA DE SISTEMAS</ion-title>
-  </ion-toolbar>
+<ion-card>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title class="titleBar">SERVIDORES AREA DE SISTEMAS</ion-title>
+    </ion-toolbar>
 
-  <ion-searchbar class="searchBar" placeholder="Buscar ip, hostname, url" animated (ionChange)="searchServer($event)"></ion-searchbar>
-</ion-header>
+    <ion-searchbar class="searchBar" placeholder="Buscar ip, hostname, url" animated (ionChange)="searchServer($event)"></ion-searchbar>
+  </ion-header>
 
-<ion-content>
+  <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content refreshingSpinner="crescent"></ion-refresher-content>
+    </ion-refresher>
 
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content refreshingSpinner="crescent"></ion-refresher-content>
-  </ion-refresher>
+    <ion-list class="elements">
 
-  <ion-list class="elements">
+      <element-card *ngFor="let server of searchedServer; index as i"
+          [element]="server">
+        </element-card>
 
-    <element-card *ngFor="let server of searchedServer; index as i"
-        [element]="server">
-      </element-card>
-
-  </ion-list>
-
-  <ion-footer>Copyrights</ion-footer>
-
-</ion-content>
+    </ion-list>
+  </ion-content>
+</ion-card>
