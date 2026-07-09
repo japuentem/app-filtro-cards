@@ -1,68 +1,49 @@
-.element-card {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  margin-bottom: 40px;
-  text-align: center;
-  border-radius: 4px;
-  padding: 20px 0;
-  box-shadow: 0 1px 16px 0 rgba(0, 0, 0, .2), 0 2px 8px 0 rgba(0, 0, 0, .14), 0 4px 8px -1px rgba(0, 0, 0, .12);
+.premium-card {
+  margin: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.element-card .element-title {
-  font-size: 27px;
-  font-weight: bold;
+.premium-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
 }
 
-.element-card .element-description {
-  max-width: 360px;
-  margin: 0 auto;
-  margin-top: 15px;
-  text-align: left;
-  padding-left: 25px;
-  user-select: none;
+.info-list ion-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
 }
 
-.category1 {
-  margin-top: 15px;
-  background: lightblue;
-  font-size: 12px;
-  color: grey;
-  border: 1px solid grey;
-  border-radius: 4px;
-  padding: 2px 3px;
-  display: inline;
+.info-list ion-icon {
+  margin-right: 16px;
 }
 
-.category2 {
-  margin-top: 15px;
-  background: lightgreen;
-  font-size: 12px;
-  color: grey;
-  border: 1px solid grey;
-  border-radius: 4px;
-  padding: 2px 3px;
-  display: inline;
+.info-list h3 {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--ion-color-medium);
+  margin-bottom: 2px;
 }
 
-.assigned1 {
-  margin-top: 15px;
-  background: lightpink;
-  font-size: 12px;
-  color: grey;
-  border: 1px solid grey;
-  border-radius: 4px;
-  padding: 2px 3px;
-  display: inline;
-  margin-top: 5px;
+.info-list p {
+  font-size: 1rem;
+  color: var(--ion-color-dark);
 }
 
-.assigned2 {
-  margin-top: 15px;
-  background: lightsalmon;
-  font-size: 12px;
-  color: grey;
-  border: 1px solid grey;
-  border-radius: 4px;
-  padding: 2px 3px;
-  display: inline;
-  margin-top: 5px;
+.notes-section {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--ion-color-light);
+}
+
+.tags-section {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+ion-chip {
+  margin: 0;
 }

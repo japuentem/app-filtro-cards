@@ -1,6 +1,6 @@
 
 
-export interface Element {
+export interface ServerItem {
     id:number;
     title:string;
     ip: string;

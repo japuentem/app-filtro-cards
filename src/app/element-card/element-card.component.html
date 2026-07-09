@@ -1,31 +1,74 @@
-<div class="element-card">
-  <div class="element-title">
-    <!-- {{ cardIndex }}.- IP: {{ element?.ip }} -->
-    {{ element?.id }}.- IP: {{ element?.title }}
-  </div>
-  <img width="300" alt="" class="element-title"
-        alt=""
-        src="https://s3-us-west-1.amazonaws.com/angular-university/course-images/angular-core-in-depth-small.png">
+<ion-card class="premium-card">
+  <img 
+    alt="Server image"
+    src="https://s3-us-west-1.amazonaws.com/angular-university/course-images/angular-core-in-depth-small.png" 
+  />
+  
+  <ion-card-header>
+    <ion-card-subtitle>ID: {{ element?.id }}</ion-card-subtitle>
+    <ion-card-title>{{ element?.title }}</ion-card-title>
+  </ion-card-header>
 
-  <div>
-    <p class="element-description"> IP: {{ element?.ip }} </p>
-    <p class="element-description"> Hostname: {{ element?.hostname }} </p>
-    <p class="element-description"> url: {{ element?.url }} </p>
+  <ion-card-content>
+    <ion-list lines="none" class="info-list">
+      <ion-item>
+        <ion-icon name="globe-outline" slot="start" color="primary"></ion-icon>
+        <ion-label class="ion-text-wrap">
+          <h3>IP</h3>
+          <p>{{ element?.ip }}</p>
+        </ion-label>
+      </ion-item>
+      
+      <ion-item>
+        <ion-icon name="server-outline" slot="start" color="secondary"></ion-icon>
+        <ion-label class="ion-text-wrap">
+          <h3>Hostname</h3>
+          <p>{{ element?.hostname }}</p>
+        </ion-label>
+      </ion-item>
+      
+      <ion-item>
+        <ion-icon name="link-outline" slot="start" color="tertiary"></ion-icon>
+        <ion-label class="ion-text-wrap">
+          <h3>URL</h3>
+          <p><a [href]="element?.url" target="_blank">{{ element?.url }}</a></p>
+        </ion-label>
+      </ion-item>
+      
+      <ion-item>
+        <ion-icon name="person-circle-outline" slot="start" color="medium"></ion-icon>
+        <ion-label class="ion-text-wrap">
+          <h3>Usuario</h3>
+          <p>{{ element?.user }}</p>
+        </ion-label>
+      </ion-item>
 
-    <p class="element-description"> Usuario: {{ element?.user }} </p>
-    <p class="element-description"> Contraseña: {{ element?.password }} </p>
-
-    <p class="element-description"> Notas: {{ element?.notes }} </p>
-
-      <div [ngSwitch]="element?.category">
-        <div class="category1" *ngSwitchCase="'SO'">{{ element?.category }}</div>
-        <div class="category2" *ngSwitchCase="'BD'">{{ element?.category }}</div>
-      </div>
-
-      <div [ngSwitch]="element?.assigned">
-        <div class="assigned1" *ngSwitchCase="'INFRA'">{{ element?.assigned }}</div>
-        <div class="assigned2" *ngSwitchCase="'SYS'">{{ element?.assigned }}</div>
-      </div>
+      <ion-item>
+        <ion-icon name="key-outline" slot="start" color="warning"></ion-icon>
+        <ion-label>
+          <h3>Contraseña</h3>
+          <p>••••••••</p>
+        </ion-label>
+        <ion-button fill="clear" slot="end" (click)="copyPassword(element?.password)">
+          <ion-icon name="copy-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+    
+    <div *ngIf="element?.notes" class="notes-section">
+      <ion-text color="medium">
+        <small><strong>Notas:</strong> {{ element?.notes }}</small>
+      </ion-text>
     </div>
 
-</div>
+    <div class="tags-section">
+      <ion-chip [color]="element?.category === 'SO' ? 'primary' : 'success'">
+        <ion-label>{{ element?.category }}</ion-label>
+      </ion-chip>
+      
+      <ion-chip [color]="element?.assigned === 'INFRA' ? 'tertiary' : 'warning'">
+        <ion-label>{{ element?.assigned }}</ion-label>
+      </ion-chip>
+    </div>
+  </ion-card-content>
+</ion-card>

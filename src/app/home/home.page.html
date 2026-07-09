@@ -1,18 +1,41 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title class="titleBar">SERVIDORES AREA DE SISTEMAS</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Servidores - Área de Sistemas</ion-title>
   </ion-toolbar>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-searchbar class="searchBar" placeholder="Buscar ip, hostname, url" animated (ionChange)="searchServer($event)"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content refreshingSpinner="crescent"></ion-refresher-content>
   </ion-refresher>
 
-  <ion-list class="elements">
+  <ion-list class="elements" *ngIf="!isLoading; else loadingSkeleton">
     <element-card *ngFor="let server of searchedServer" [element]="server"></element-card>
   </ion-list>
+
+  <ng-template #loadingSkeleton>
+    <ion-list class="elements">
+      <ion-card class="premium-card" *ngFor="let i of [1,2,3,4,5]">
+        <ion-card-header>
+          <ion-card-subtitle><ion-skeleton-text animated style="width: 30%;"></ion-skeleton-text></ion-card-subtitle>
+          <ion-card-title><ion-skeleton-text animated style="width: 60%; height: 24px;"></ion-skeleton-text></ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list lines="none" class="info-list">
+            <ion-item *ngFor="let j of [1,2,3,4]">
+              <ion-icon name="ellipse" slot="start" color="light"></ion-icon>
+              <ion-label>
+                <h3><ion-skeleton-text animated style="width: 40%"></ion-skeleton-text></h3>
+                <p><ion-skeleton-text animated style="width: 80%"></ion-skeleton-text></p>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </ng-template>
+
 </ion-content>

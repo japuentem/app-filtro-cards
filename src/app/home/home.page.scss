@@ -1,10 +1,5 @@
-.titleBar {
-  background-color: rgb(0, 47, 135) !important;
-  color: white;
-}
-
-.searchBar {
-  background-color: rgb(0, 47, 135) !important;
-  color: white;
-  border: none;
-}
+/* 
+  Los estilos de la barra y el título ahora se manejan con 
+  las variables de color nativas de Ionic (color="primary") 
+  en el archivo HTML.
+*/
