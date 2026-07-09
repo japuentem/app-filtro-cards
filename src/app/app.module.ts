@@ -10,11 +10,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule } from '@angular/forms'
-import { ElementCardComponent } from './element-card/element-card.component';
 
 @NgModule({
   declarations: [
-    AppComponent,ElementCardComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
